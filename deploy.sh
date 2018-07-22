@@ -1,7 +1,10 @@
 #!/bin/bash
 
+ENV=$1
+PROFILE=$2
+
 aws cloudformation create-stack \
-    --stack-name $1-cfn-demo-stack \
+    --stack-name ${ENV}-cfn-demo-stack \
     --template-body file://template.yaml \
     --capabilities CAPABILITY_NAMED_IAM \
-    --profile $2
+    --profile ${PROFILE}
