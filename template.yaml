@@ -1,13 +1,19 @@
 
 Description: 'Hello World Lambda'
 
+Parameters:
+
+  Env:
+    Type: String
+    Default: ""
+    MaxLength: 10
 
 Resources:
 
   LambdaRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName:  "CfnDemoRole"
+      RoleName:  !Sub "${Env}CfnDemoRole"
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
