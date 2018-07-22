@@ -1,7 +1,8 @@
-Mappings
---------
+Conditions
+----------
 
-Mappings enable us to **map an input parameter to a set of constant values**.
-e.g. for account=preprod use this EC2 instance and for account=prod is a stronger instance.
+Conditions enable us to **condition a resource creation on a predicate**.
+
+e.g. only for account prod create an s3 bucket.
 
 

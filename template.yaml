@@ -14,7 +14,7 @@ Parameters:
   BucketUrl:
     Type: String
 
-  Account:  # <----------------------- pass account parameter
+  Account:
     Type: String
 
 Mappings:
@@ -22,6 +22,9 @@ Mappings:
     timeout:
       preprod: 23
       prod: 60
+
+Conditions:
+  CreateS3Bucket: !Equals [!Ref Account, "prod"]
 
 Resources:
 
@@ -57,14 +60,15 @@ Resources:
       Runtime: "python3.6"
       Handler: "index.handler"
       Role: !GetAtt LambdaRole.Arn
-      Timeout: !FindInMap [AccountToLambdaMapping, "timeout", !Ref Account] # <------- find the corresponding value in the map
+      Timeout: !FindInMap [AccountToLambdaMapping, "timeout", !Ref Account]
       Code:
         ZipFile: |
           def handler(event, context):
               print("Hello Bros!")
 
   NestedS3Stack:
-    Type: AWS::CloudFormation::Stack # <------------------ Nested Stack
+    Type: AWS::CloudFormation::Stack # <---------- condition on resource creation. This resource will be removed from cfn.
+    Condition: CreateS3Bucket
     Properties:
       Parameters:
         Env: !Ref Env
