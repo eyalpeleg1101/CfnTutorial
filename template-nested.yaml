@@ -19,7 +19,7 @@ Resources:
         - Key: "Env"
           Value: !Ref Env
         - Key: "Account"
-          Value: !Ref AWS::AccountId # <----------------- Pseudo Parameter
+          Value: !Ref AWS::AccountId
 
 Outputs:
 

@@ -1,5 +1,5 @@
 
-Description: 'Hello World Lambda'
+Description: 'Cfn Demo'
 
 Parameters:
 
@@ -17,8 +17,9 @@ Parameters:
   Account:  # <----------------------- pass account parameter
     Type: String
 
-Mappings:
-  AccountToLambdaMapping:
+Mappings: # <-------------------- add a Mappings section
+
+  AccountToLambdaMapping: # <---------------- Add a mapping per account
     timeout:
       preprod: 23
       prod: 60
@@ -57,14 +58,14 @@ Resources:
       Runtime: "python3.6"
       Handler: "index.handler"
       Role: !GetAtt LambdaRole.Arn
-      Timeout: !FindInMap [AccountToLambdaMapping, "timeout", !Ref Account] # <------- find the corresponding value in the map
+      Timeout: !FindInMap [AccountToLambdaMapping, "timeout", !Ref Account] # <------- find the corresponding value in the map according to account value
       Code:
         ZipFile: |
           def handler(event, context):
               print("Hello Bros!")
 
   NestedS3Stack:
-    Type: AWS::CloudFormation::Stack # <------------------ Nested Stack
+    Type: AWS::CloudFormation::Stack
     Properties:
       Parameters:
         Env: !Ref Env
