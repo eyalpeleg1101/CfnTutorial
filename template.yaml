@@ -7,7 +7,7 @@ Resources:
   LambdaRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName:  !Sub "CfnDemoRole"
+      RoleName:  "CfnDemoRole"
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
