@@ -26,3 +26,11 @@ Cloud formation offers:
 * plug in components
 
 
+How To Use This Guide
+---------------------
+This project is a **simple git project** where **every branch is a step in the tutorial**.
+At each step you should checkout the relevant branch and execute the cfn templates using the deploy script.
+
+```bash
+./deploy <username> <aws-profile>
+```
