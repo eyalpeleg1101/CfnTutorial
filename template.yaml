@@ -38,6 +38,13 @@ Resources:
                   - "cloudwatch:PutMetricData"
                 Resource: "*"
 
+  NestedS3Stack:
+    Type: AWS::CloudFormation::Stack # <------------------ Creating a Nested Stack
+    Properties:
+      Parameters: # <-------------------------- Passing parameters to the stack
+        Env: !Ref Env
+      TemplateURL: !Ref BucketUrl
+
   Lamda:
     Type: AWS::Lambda::Function
     Properties:
@@ -45,6 +52,9 @@ Resources:
         - "${Environment}${Name}Lambda"
         - Environment: !Ref Env
           Name: !Ref FunctionName
+      Description: !Sub
+        - "a lambda that writes to ${bucket} s3 bucket"
+        - bucket: !GetAtt NestedS3Stack.Outputs.s3BucketName # <------------ Referencing a Nested Stacks Outputs
       Runtime: "python3.6"
       Handler: "index.handler"
       Role: !GetAtt LambdaRole.Arn
@@ -53,13 +63,6 @@ Resources:
         ZipFile: |
           def handler(event, context):
               print("Hello Bros!")
-
-  NestedS3Stack:
-    Type: AWS::CloudFormation::Stack # <------------------ Nested Stack
-    Properties:
-      Parameters:
-        Env: !Ref Env
-      TemplateURL: !Ref BucketUrl
 
 Outputs:
 
