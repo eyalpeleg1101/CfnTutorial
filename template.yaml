@@ -50,3 +50,10 @@ Resources:
         ZipFile: |
           def handler(event, context):
               print("Hello Bros!")
+
+Outputs:
+
+   LambdaRoleArn:
+    Value: !GetAtt LambdaRole.Arn
+    Export:
+      Name: !Sub "${Env}-demo-cfn-lambda-role-arn"

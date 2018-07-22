@@ -1,0 +1,31 @@
+
+Description: 'Hello World Lambda'
+
+Parameters:
+
+  Env:
+    Type: String
+    Default: ""
+    MaxLength: 10
+
+  FunctionName:
+    Type: String
+
+Resources:
+
+  Lamda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub
+        - "${Environment}${Name}Lambda"
+        - Environment: !Ref Env
+          Name: !Ref FunctionName
+      Runtime: "python3.6"
+      Handler: "index.handler"
+      Role:
+        Fn::ImportValue: !Sub "${Env}-demo-cfn-lambda-role-arn"
+      Timeout: 30
+      Code:
+        ZipFile: |
+          def handler(event, context):
+              print("Goodbye Bros!")
