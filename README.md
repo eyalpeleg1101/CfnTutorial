@@ -1,9 +1,7 @@
-References
-----------
+Nested Stacks
+--------------
 
-In this section we will get acquainted with two types of references:
-    1. Ref function
-    2. GetAtt function
+Nested stacks enable **code re-use** by calling a stack from another stack,
+passing it parameters and using its outputs.
 
-In addition we will examine a more complex variation of !Sub function
-
+Additionally we will have a look at **Pseudo Parameters**

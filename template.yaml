@@ -11,6 +11,9 @@ Parameters:
   FunctionName:
     Type: String
 
+  BucketUrl:
+    Type: String
+
 Resources:
 
   LambdaRole:
@@ -50,6 +53,13 @@ Resources:
         ZipFile: |
           def handler(event, context):
               print("Hello Bros!")
+
+  NestedS3Stack:
+    Type: AWS::CloudFormation::Stack # <------------------ Nested Stack
+    Properties:
+      Parameters:
+        Env: !Ref Env
+      TemplateURL: !Ref BucketUrl
 
 Outputs:
 

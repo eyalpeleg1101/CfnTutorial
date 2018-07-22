@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "S3 Bucket"
+
+Parameters:
+
+  Env:
+    Type: String
+
+Resources:
+
+  s3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${Env}-demo-cfn-s3-bucket"
+      Tags:
+        - Key: "Name"
+          Value: !Sub "${Env}-demo-cfn-s3-bucket"
+        - Key: "Env"
+          Value: !Ref Env
+        - Key: "Account"
+          Value: !Ref AWS::AccountId # <----------------- Pseudo Parameter
+
+Outputs:
+
+  s3BucketName:
+    Value: !Ref s3Bucket
+    Export:
+      Name: !Sub "${Env}-demo-cfn-s3-bucket-name"
+
+  s3BucketArn:
+    Value: !GetAtt s3Bucket.Arn
+    Export:
+      Name: !Sub "${Env}-demo-cfn-s3-bucket-arn"
