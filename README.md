@@ -26,11 +26,16 @@ Cloud formation offers:
 * plug in components
 
 
+Prerequisites
+-------------
+* AWS account
+* AWS profile set on the machine with administrator permissions.
+
 How To Use This Guide
 ---------------------
 This project is a **simple git project** where **every branch is a step in the tutorial**.
 At each step you should checkout the relevant branch and execute the cfn templates using the deploy script.
 
 ```bash
-./deploy <username> <aws-profile>
+./deploy <env> <aws-profile>
 ```
