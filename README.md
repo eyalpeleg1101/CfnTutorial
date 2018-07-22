@@ -1,7 +1,7 @@
-Nested Stacks
---------------
+Mappings
+--------
 
-Nested stacks enable **code re-use** by calling a stack from another stack,
-passing it parameters and using its outputs.
+Mappings enable us to **map an input parameter to a set of constant values**.
+e.g. for account=preprod use this EC2 instance and for account=prod is a stronger instance.
 
-Additionally we will have a look at **Pseudo Parameters**
+

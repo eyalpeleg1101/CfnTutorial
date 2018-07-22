@@ -15,5 +15,6 @@ aws cloudformation update-stack \
       ParameterKey=Env,ParameterValue=foo \
       ParameterKey=FunctionName,ParameterValue=CfnDemo \
       ParameterKey=BucketUrl,ParameterValue="https://s3.amazonaws.com/${BUCKET_NAME}/template-nested.yaml" \
+      ParameterKey=Account,ParameterValue=preprod \
     --capabilities CAPABILITY_NAMED_IAM \
     --profile $1

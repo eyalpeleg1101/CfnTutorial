@@ -14,6 +14,15 @@ Parameters:
   BucketUrl:
     Type: String
 
+  Account:  # <----------------------- pass account parameter
+    Type: String
+
+Mappings:
+  AccountToLambdaMapping:
+    timeout:
+      preprod: 23
+      prod: 60
+
 Resources:
 
   LambdaRole:
@@ -48,7 +57,7 @@ Resources:
       Runtime: "python3.6"
       Handler: "index.handler"
       Role: !GetAtt LambdaRole.Arn
-      Timeout: 30
+      Timeout: !FindInMap [AccountToLambdaMapping, "timeout", !Ref Account] # <------- find the corresponding value in the map
       Code:
         ZipFile: |
           def handler(event, context):
