@@ -1,8 +1,11 @@
 #!/bin/bash
 
+ENV=$1
+PROFILE=$2
+
 aws cloudformation update-stack \
-    --stack-name cfn-demo-stack \
+    --stack-name ${ENV}-cfn-demo-stack \
     --template-body file://template.yaml \
-    --parameters ParameterKey=Env,ParameterValue=foo \
+    --parameters ParameterKey=Env,ParameterValue=${ENV} \
     --capabilities CAPABILITY_NAMED_IAM \
-    --profile $1
+    --profile ${PROFILE}

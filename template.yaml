@@ -1,9 +1,9 @@
 
-Description: 'Hello World Lambda'
+Description: 'Cfn Demo'
 
-Parameters:
+Parameters: # <----------------------- define parameter section
 
-  Env:
+  Env: # <----------------- define a parameter
     Type: String
     Default: ""
     MaxLength: 10
@@ -13,7 +13,7 @@ Resources:
   LambdaRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName:  !Sub "${Env}CfnDemoRole"
+      RoleName:  !Sub "${Env}CfnDemoRole" # <---------------- Reference the parameter
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
