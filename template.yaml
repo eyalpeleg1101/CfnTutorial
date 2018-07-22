@@ -1,5 +1,5 @@
 
-Description: 'Hello World Lambda'
+Description: 'Cfn Demo'
 
 Parameters:
 
@@ -53,7 +53,7 @@ Resources:
 
 Outputs:
 
-   LambdaRoleArn:
+   LambdaRoleArn: # <---------------------- Exporting the Lambda Role Arn
     Value: !GetAtt LambdaRole.Arn
     Export:
       Name: !Sub "${Env}-demo-cfn-lambda-role-arn"

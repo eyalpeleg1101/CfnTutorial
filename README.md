@@ -1,9 +1,13 @@
-References
-----------
+Exports
+-------
 
-In this section we will get acquainted with two types of references:
-    1. Ref function
-    2. GetAtt function
+In this section we will get acquainted with cfn outputs and exports.
+Exports enable us to **pass values between stacks**.
 
-In addition we will examine a more complex variation of !Sub function
+e.g. after creating a Role in a given stack we can export its ARN and than other stacks that
+might require this role could simply import and reference the value.
+
+This way we can build a more **modular architecture** where each stack references
+resources from other stacks by importing their exported values.
+
 
