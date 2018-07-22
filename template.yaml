@@ -1,5 +1,5 @@
 
-Description: 'Hello World Lambda'
+Description: 'Cfn Demo'
 
 Parameters:
 
@@ -41,10 +41,10 @@ Resources:
       FunctionName: !Sub
         - "${Environment}${Name}Lambda"
         - Environment: !Ref Env
-          Name: !Ref FunctionName
+          Name: !Ref FunctionName # <------------------ Referencing a parameter
       Runtime: "python3.6"
       Handler: "index.handler"
-      Role: !GetAtt LambdaRole.Arn
+      Role: !GetAtt LambdaRole.Arn   # <------------------ Referencing a resource
       Timeout: 30
       Code:
         ZipFile: |
