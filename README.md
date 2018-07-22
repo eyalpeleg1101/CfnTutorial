@@ -1,4 +1,10 @@
 Resources
 ---------
 
-In this section we will learn how to create a Resource using cfn.
+A resource could be a variety of AWS entities:
+* s3 bucket
+* IAM role
+* ec2 instance
+* etc.
+
+
