@@ -1,5 +1,5 @@
 
-Description: 'Hello World Lambda'
+Description: 'Cfn Demo'
 
 Parameters:
 
@@ -14,7 +14,7 @@ Parameters:
   BucketUrl:
     Type: String
 
-  Account:
+  Account:   # <-------------------- Pass account parameter
     Type: String
 
 Mappings:
@@ -23,8 +23,9 @@ Mappings:
       preprod: 23
       prod: 60
 
-Conditions:
-  CreateS3Bucket: !Equals [!Ref Account, "prod"]
+Conditions: # <---------------------------------------------- Add conditions section
+
+  CreateS3Bucket: !Equals [!Ref Account, "prod"]  # <------------------ Add a condition predicate
 
 Resources:
 
@@ -67,8 +68,8 @@ Resources:
               print("Hello Bros!")
 
   NestedS3Stack:
-    Type: AWS::CloudFormation::Stack # <---------- condition on resource creation. This resource will be removed from cfn.
-    Condition: CreateS3Bucket
+    Type: AWS::CloudFormation::Stack
+    Condition: CreateS3Bucket # <---------- condition on resource creation. This resource will be removed from cfn.
     Properties:
       Parameters:
         Env: !Ref Env
