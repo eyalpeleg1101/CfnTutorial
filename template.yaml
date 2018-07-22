@@ -1,13 +1,14 @@
+---
+AWSTemplateFormatVersion: "2010-09-09" # <-------------------- don't touch
 
-Description: 'Hello World Lambda'
-
+Description: 'Cfn Demo' # <-------------------- stack description
 
 Resources:
 
-  LambdaRole:
-    Type: AWS::IAM::Role
+  LambdaRole:  # <-------------------- define a resource
+    Type: AWS::IAM::Role # <-------------------- define a resource type (check api in docs)
     Properties:
-      RoleName:  "CfnDemoRole"
+      RoleName:  "eyalCfnDemoRole" # <-------------------- edit this and add your name as a prefix
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
