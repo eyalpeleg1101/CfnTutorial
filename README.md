@@ -20,9 +20,10 @@ Agenda
 Intro
 -----
 Cloud formation offers:
-* Automation as code.
+* Automation as code
 * Infrastructure versioning
 * easy create/delete/update
+* fast and efficient deployment
 * plug in components
 
 
